@@ -1,0 +1,65 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.mycompany</groupId>
+    <artifactId>terceraEntregaTpi</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.release>25</maven.compiler.release>
+
+        <!-- Ruta donde tenés las DLL de JPL -->
+        <prolog.dir>${project.basedir}/prolog</prolog.dir>
+
+        <exec.mainClass>terceraEntregaTpi.M.Main</exec.mainClass>
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.netbeans.external</groupId>
+            <artifactId>AbsoluteLayout</artifactId>
+            <version>RELEASE270</version>
+        </dependency>
+
+        <!-- Dependencia LOCAL de JPL -->
+        <dependency>
+            <groupId>org.jpl7</groupId>
+            <artifactId>jpl</artifactId>
+            <version>7.6.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/jpl.jar</systemPath>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+
+            <!-- Para ejecutar el proyecto con las DLL de Prolog -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <mainClass>${exec.mainClass}</mainClass>
+                    <classpathScope>compile</classpathScope>
+
+                    <systemProperties>
+                        <java.library.path>${project.basedir}/prolog/bin</java.library.path>
+                    </systemProperties>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <name>terceraEntregaTpiCopia</name>
+
+</project>
