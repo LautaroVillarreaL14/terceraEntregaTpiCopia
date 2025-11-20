@@ -23,7 +23,7 @@ import terceraEntregaTpi.M.Buscador; //aca usamos interfaz, habria que agregarle
 import terceraEntregaTpi.V.PantallaMostrarCuenta;
 import terceraEntregaTpi.V.PantallaCargarSaldo;
 
-
+//hola
 public class ControladorCuentas implements Buscador{
     private final PantallaMostrarUsuarios vista;
     
