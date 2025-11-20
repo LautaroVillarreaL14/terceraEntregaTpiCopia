@@ -72,6 +72,15 @@ public class Persona{
     public void setPatente(String patente){
         patenteVehiculo = patente;
     }
+    public String getMarcaVehiculo(){
+        return this.marcaVehiculo;
+    }
+    public String getModeloVehiculo(){
+        return this.modelovehiculo;
+    }
+    public String getPatenteVehiculo(){
+        return this.patenteVehiculo;
+    }
     
     
 }

@@ -3,8 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package terceraEntregaTpi.C;
-import terceraEntregaTpi.V.Usuarios;
-import terceraEntregaTpi.V.Usuarios;
+import terceraEntregaTpi.V.PantallaMostrarUsuarios;
+import terceraEntregaTpi.V.PantallaMostrarUsuarios;
 import org.jpl7.*;
 import java.util.ArrayList;
 import terceraEntregaTpi.V.PantallaCrearCuenta;
@@ -20,21 +20,59 @@ import java.io.FileWriter;
 import java.io.IOException;
 import terceraEntregaTpi.M.Main;
 import terceraEntregaTpi.C.ControladorPersona;
-import terceraEntregaTpi.V.Usuarios;
+import terceraEntregaTpi.V.PantallaMostrarUsuarios;
 import terceraEntregaTpi.V.PantallaPrincipal;
 import terceraEntregaTpi.M.ManipuladorArchivosProlog;
 import terceraEntregaTpi.M.Buscador; //aca usamos interfaz, habria que agregarle algo mas o hacer otra
+import terceraEntregaTpi.V.PantallaMostrarCuenta;
+import terceraEntregaTpi.V.PantallaCargarSaldo;
+
 
 public class ControladorCuentas implements Buscador{
-    private final Usuarios vista;
+    private final PantallaMostrarUsuarios vista;
     
     
-    public ControladorCuentas(Usuarios vista){
+    public ControladorCuentas(PantallaMostrarUsuarios vista){
         this.vista = vista;
         
         
         ManipuladorArchivosProlog manipulador = new ManipuladorArchivosProlog();
-        this.vista.getBotonBuscar().addActionListener(e->{mostrarPersonas(manipulador);});    
+        this.vista.getBotonBuscar().addActionListener(e->{mostrarPersonas(manipulador);}); 
+        this.vista.getBotonGestionarCuenta().addActionListener(e->{
+            String usuarioSeleccionado = this.vista.obtenerUsuarioSeleccionado();
+            if(usuarioSeleccionado!=null){
+                vista.dispose();
+                Persona pSeleccionada = llamarPersonaSeleccionada(usuarioSeleccionado,buscarPersonasConCuenta(manipulador));
+                String contraseña = manipulador.obtenerContraseñaPorLegajo(pSeleccionada.getLegajo());
+                String saldo = manipulador.obtenerSaldoPorLegajo(pSeleccionada.getLegajo());
+                PantallaMostrarCuenta mostrarCuenta = new PantallaMostrarCuenta(pSeleccionada, contraseña, saldo);
+                
+                mostrarCuenta.setVisible(true);
+                mostrarCuenta.getBotonRecargarSaldo().addActionListener(evt->{
+                    int saldoAnterior = java.lang.Integer.parseInt(manipulador.obtenerSaldoPorLegajo(pSeleccionada.getLegajo()));
+                    System.out.println("saldo anterior "+saldoAnterior);
+                    PantallaCargarSaldo cargarSaldo = new PantallaCargarSaldo();
+                    cargarSaldo.setVisible(true);
+                    cargarSaldo.getBotonConfirmarRecarga().addActionListener(evento->{
+                        String saldoString = cargarSaldo.getTxtSaldoCargar().getText();
+                        System.out.println("Saldo a carcar el que yo escribi "+saldoString);
+                        int  saldoEntero = java.lang.Integer.parseInt(saldoString);
+                        System.out.println("saldo entero "+saldoEntero);
+                        if(!saldoString.isEmpty() && saldoEntero>=0){
+                            
+                            String nuevoSaldo = String.valueOf(saldoEntero+saldoAnterior);
+                            System.out.println("nuevo saldo "+nuevoSaldo);
+                            manipulador.CambiarSaldoCuenta(pSeleccionada, contraseña, nuevoSaldo);
+                            JOptionPane.showMessageDialog(null, "Saldo cargado con exito \n Nuevo saldo: $"+nuevoSaldo);
+                            cargarSaldo.dispose();
+                            
+                        }
+                    });
+                });
+                
+            }
+            
+        });
     }
     
     
@@ -51,7 +89,10 @@ public class ControladorCuentas implements Buscador{
                     modeloLista.addElement(u.getNombre() + " " + u.getApellido() + " " + u.getDNI());
                 }
             }
-            vista.getListaUsuarios().setModel(modeloLista);
+            
+            if(modeloLista.size()>0){
+                vista.getListaUsuarios().setModel(modeloLista);
+            }else{JOptionPane.showMessageDialog(null, "No hay cuentas creadas");}
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null, "No se pudo realizar la busqueda");
@@ -66,7 +107,7 @@ public class ControladorCuentas implements Buscador{
         if (!manipulador.abrirArchivoBaseDeConocimientoPersonas()) {
             return conCuenta;
         }
-        Query buscar = new Query("usuario(Nombre, Apellido, Legajo, Dni, Telefono, Correo, Tipo, Marca, Modelo, Patente, true)");
+        Query buscar = new Query("usuario(Nombre, Apellido, Legajo, Dni, Telefono, Correo, Tipo, Marca, Modelo, Patente, Saldo, Contraseña, true)");
         while(buscar.hasMoreSolutions()){
             Map<String, Term> solucion = buscar.nextSolution();
             String nombre = solucion.get("Nombre").toString().replace("\"", "");
@@ -79,6 +120,7 @@ public class ControladorCuentas implements Buscador{
             String marca = solucion.get("Marca").toString().replace("\"", "");
             String modelo = solucion.get("Modelo").toString().replace("\"", "");
             String patente = solucion.get("Patente").toString().replace("\"", "");
+            String contraseña = solucion.get("Contraseña").toString().replace("\"", "");
             Boolean cuenta = true;
             
             Persona personaConCuenta = new Persona(nombre, apellido, legajo, dni, telefono, correo, tipoPersona, marca, modelo, patente, cuenta);
@@ -88,6 +130,20 @@ public class ControladorCuentas implements Buscador{
         
         return conCuenta;
     }
+    public Persona llamarPersonaSeleccionada(String usuario, List<Persona> listaPersonas){
+        String[] datos = usuario.split(" ");
+        Long dni = Long.parseLong(datos[2]);
+        for(Persona p: listaPersonas){
+            if(p.getDNI().equals(dni)){
+                System.out.println(p);
+                return p;
+            }
+        }
+        return null;
+    }
+    
+    
+    
      
 }
     

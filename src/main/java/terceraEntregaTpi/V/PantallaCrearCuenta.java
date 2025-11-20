@@ -15,8 +15,9 @@ public class PantallaCrearCuenta extends javax.swing.JFrame {
     /**
      * Creates new form PantallaCrearCuenta
      */
-    public PantallaCrearCuenta(String nombre,String apellido,Long legajo,Long dni,Long telefono) {
+    public PantallaCrearCuenta(String nombre,String apellido,Long legajo,Long dni,Long telefono) {//hacer que a esto se le pase una persona y tomar los datos adentro
         initComponents();
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         txtNombreTomadoPorBoton.setColumns(10);
         txtApellidoTomadoPorBoton.setColumns(10);

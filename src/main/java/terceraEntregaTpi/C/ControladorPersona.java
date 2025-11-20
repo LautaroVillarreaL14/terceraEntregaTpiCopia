@@ -1,5 +1,5 @@
 package terceraEntregaTpi.C;
-import terceraEntregaTpi.V.Usuarios;
+import terceraEntregaTpi.V.PantallaMostrarUsuarios;
 import org.jpl7.*;
 import java.util.ArrayList;
 import terceraEntregaTpi.V.PantallaCrearCuenta;
@@ -19,14 +19,14 @@ import terceraEntregaTpi.M.ManipuladorArchivosProlog;
 import terceraEntregaTpi.M.VerificarDatos;
 
 public class ControladorPersona implements Buscador, VerificarDatos{
-    private final Usuarios vista;
+    private final PantallaMostrarUsuarios vista;
     
     
-    public ControladorPersona(Usuarios vista){
+    public ControladorPersona(PantallaMostrarUsuarios vista){
         ManipuladorArchivosProlog manipulador = new ManipuladorArchivosProlog();
         this.vista = vista;
         this.vista.getBotonBuscar().addActionListener(e -> {mostrarPersonas(manipulador);});
-        this.vista.getBotonCrearCuenta().addActionListener(evt->{
+        this.vista.getBotonGestionarCuenta().addActionListener(evt->{//aca----------
             String usuarioSeleccionado = this.vista.obtenerUsuarioSeleccionado();
             System.out.println(usuarioSeleccionado);
             if(usuarioSeleccionado!=null){
@@ -48,7 +48,7 @@ public class ControladorPersona implements Buscador, VerificarDatos{
                         System.out.println(nuevaCuenta.getCuenta());
                         System.out.println(nuevaCuenta.getVehiculos());
                         pantalla.dispose();
-                        manipulador.cambiarParametroNoTieneCuenta(pSeleccionada,vehiculo);
+                        manipulador.cambiarParametroNoTieneCuenta(pSeleccionada,vehiculo,contraseña);
                         Main.main(null);
                         
                         
@@ -118,7 +118,7 @@ public class ControladorPersona implements Buscador, VerificarDatos{
         }
         
         
-        Query buscar = new Query("usuario(Nombre, Apellido, Legajo, Dni, Telefono, Correo, Tipo, Marca, Modelo, Patente, Cuenta)");
+        Query buscar = new Query("usuario(Nombre, Apellido, Legajo, Dni, Telefono, Correo, Tipo, Marca, Modelo, Patente, Saldo, Contraseña, Cuenta)");
 
         while(buscar.hasMoreSolutions()){
             Map<String, Term> solucion = buscar.nextSolution();

@@ -8,20 +8,21 @@ package terceraEntregaTpi.V;
  *
  * @author lautaro
  */
-public class Usuarios extends javax.swing.JFrame {
+public class PantallaMostrarUsuarios extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Usuarios.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(PantallaMostrarUsuarios.class.getName());
 
     /**
      * Creates new form CrearCuentaUTN
      */
-    public Usuarios() {
+    public PantallaMostrarUsuarios() {
         initComponents();
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
     
-    public javax.swing.JButton getBotonCrearCuenta(){
-        return BotonCrearCuenta;
+    public javax.swing.JButton getBotonGestionarCuenta(){
+        return BotonGestionarCuenta;
     }
     
     public String obtenerUsuarioSeleccionado(){
@@ -57,7 +58,7 @@ public class Usuarios extends javax.swing.JFrame {
         lstUsuarios = new javax.swing.JList<>();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        BotonCrearCuenta = new javax.swing.JButton();
+        BotonGestionarCuenta = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -109,13 +110,13 @@ public class Usuarios extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 80));
 
-        BotonCrearCuenta.setText("Crear");
-        BotonCrearCuenta.addActionListener(new java.awt.event.ActionListener() {
+        BotonGestionarCuenta.setText("Gestionar");
+        BotonGestionarCuenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonCrearCuentaActionPerformed(evt);
+                BotonGestionarCuentaActionPerformed(evt);
             }
         });
-        jPanel1.add(BotonCrearCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(302, 270, 80, -1));
+        jPanel1.add(BotonGestionarCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(252, 270, 130, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 310));
 
@@ -126,13 +127,13 @@ public class Usuarios extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBusquedaActionPerformed
 
-    private void BotonCrearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCrearCuentaActionPerformed
+    private void BotonGestionarCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGestionarCuentaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BotonCrearCuentaActionPerformed
+    }//GEN-LAST:event_BotonGestionarCuentaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotonCrearCuenta;
+    private javax.swing.JButton BotonGestionarCuenta;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

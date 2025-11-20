@@ -16,4 +16,6 @@ public interface Buscador {
         //con o sin cuenta dependiendo de un parametro booleano que se le pase, el mismo debera ser utilizado para el filtrado de personas
         //en la linea 80, en vez de true->bandera
     List<Persona> buscarPersonasConCuenta(ManipuladorArchivosProlog manipulador);
+    Persona llamarPersonaSeleccionada(String usuario, List<Persona> listaPersonas);
+    
 }

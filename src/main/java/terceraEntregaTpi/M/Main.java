@@ -2,7 +2,7 @@ package terceraEntregaTpi.M;
 import terceraEntregaTpi.V.PantallaPrincipal;
 import terceraEntregaTpi.C.ControladorPersona;
 import terceraEntregaTpi.V.PantallaPrincipal;
-import terceraEntregaTpi.V.Usuarios;
+import terceraEntregaTpi.V.PantallaMostrarUsuarios;
 import terceraEntregaTpi.C.ControladorCuentas;
 
 public class Main {
@@ -13,13 +13,13 @@ public class Main {
             
 
             vistaPrincipal.getBotonNuevaCuenta().addActionListener(e -> {
-                Usuarios vistaCrear = new Usuarios();
+                PantallaMostrarUsuarios vistaCrear = new PantallaMostrarUsuarios();
                 ControladorPersona controlador = new ControladorPersona(vistaCrear);
                 vistaCrear.setVisible(true);
-                vistaPrincipal.dispose();    
+                    
             });
             vistaPrincipal.getBotonGestionarCuentas().addActionListener(e->{
-               Usuarios vistaCrear = new Usuarios();
+               PantallaMostrarUsuarios vistaCrear = new PantallaMostrarUsuarios();
                ControladorCuentas controladorCuentas = new ControladorCuentas(vistaCrear);
                vistaCrear.setVisible(true);
             });
