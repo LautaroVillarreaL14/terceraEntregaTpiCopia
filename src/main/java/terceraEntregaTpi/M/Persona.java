@@ -70,9 +70,7 @@ public class Persona{
     public String getPatenteVehiculo(){
         return this.patenteVehiculo;
     }
-    //public String toString() {
-      //  return this.nombre + " " + this.apellido + " - " + this.legajo;
-    //}
+    
     
     
 }
