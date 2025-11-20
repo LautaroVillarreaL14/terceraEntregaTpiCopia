@@ -1,23 +1,19 @@
 package terceraEntregaTpi.M;
-import terceraEntregaTpi.M.VerificarDatos;
 import java.util.ArrayList;
-import java.util.Objects;
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
-import terceraEntregaTpi.M.Vehiculo;
 
+//REFACTORIZADA
 public class CuentaUsuario{
-    private String nombreUsuario;   // Nombre de usuario de la cuenta
-    private String apellidoUsuario;
-    private long legajo;            // Legajo de la persona
-    private String contraseña;     // Contraseña de la cuenta
-    private Double saldo = 0.0;     // Saldo disponible en la cuenta
-    private ArrayList<Vehiculo> vehiculos; // Lista de vehículos del usuario
-    private ArrayList<Recarga> recargas;   // Lista de recargas realizadas
+    final String nombreUsuario;   
+    final String apellidoUsuario;
+    final long legajo;            
+    final String contraseña;     
+    final Double saldo = 0.0;     
+    final ArrayList<Vehiculo> vehiculos;
+    
 
     public CuentaUsuario(Persona persona, String contraseña,Vehiculo vehiculo) {
-        vehiculos = new ArrayList<>(); // Inicializamos lista de vehículos vacía
-        recargas = new ArrayList<>();  // Inicializamos lista de recargas vacía
+        vehiculos = new ArrayList<>(); 
+        //recargas = new ArrayList<>();  
         vehiculos.add(vehiculo);
         this.nombreUsuario = persona.getNombre();
         this.apellidoUsuario = persona.getApellido();       
@@ -26,25 +22,25 @@ public class CuentaUsuario{
     }
     
     public String getCuenta(){
-        return this.nombreUsuario+" "+this.apellidoUsuario+" "+this.legajo+" "+this.contraseña+" "+this.saldo.toString()+" "+this.vehiculos+" "+this.recargas;
+        return this.nombreUsuario+" "+this.apellidoUsuario+" "+this.legajo+" "+this.contraseña+" "+this.saldo.toString()+" "+this.vehiculos+" ";
     }
     public ArrayList<Vehiculo> getVehiculos() {
         return this.vehiculos;
     }
     
-    public String conocerNombreUsuario(){
+    public String getNombreUsuario(){
         return this.nombreUsuario;
     }
-    public String conocerApellidoUsuario(){
+    public String getApellidoUsuario(){
         return this.apellidoUsuario;
     }
-    public Long conocerLegajoUsuario(){
+    public Long getLegajoUsuario(){
         return this.legajo;
     }
-    public String conocerContraseña(){
+    public String getContraseña(){
         return this.contraseña;
     }
-    public Double conocerSaldoUsuario(){
+    public Double getSaldoUsuario(){
         return this.saldo;
     }
     

@@ -1,10 +1,9 @@
 package terceraEntregaTpi.M;
-import terceraEntregaTpi.V.PantallaPrincipal;
 import terceraEntregaTpi.C.ControladorPersona;
 import terceraEntregaTpi.V.PantallaPrincipal;
 import terceraEntregaTpi.V.PantallaMostrarUsuarios;
 import terceraEntregaTpi.C.ControladorCuentas;
-
+//REFACTORIZADA
 public class Main {
     public static void main(String[] args) {
         

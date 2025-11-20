@@ -10,14 +10,13 @@ import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import terceraEntregaTpi.M.Vehiculo;
 import terceraEntregaTpi.M.CuentaUsuario;
-import java.util.Arrays;
-import java.io.FileWriter;
-import java.io.IOException;
-import terceraEntregaTpi.M.Main;
 import terceraEntregaTpi.M.Buscador;
 import terceraEntregaTpi.M.ManipuladorArchivosProlog;
 import terceraEntregaTpi.M.VerificarDatos;
+import java.util.stream.Collector;
 
+
+//ACOMODAR EL PROBLEMA DE QUE LLAMO A PERSONAS USUARIO Y A USUARIOS PERSONA(CREO)
 public class ControladorPersona implements Buscador, VerificarDatos{
     private final PantallaMostrarUsuarios vista;
     
@@ -26,9 +25,8 @@ public class ControladorPersona implements Buscador, VerificarDatos{
         ManipuladorArchivosProlog manipulador = new ManipuladorArchivosProlog();
         this.vista = vista;
         this.vista.getBotonBuscar().addActionListener(e -> {mostrarPersonas(manipulador);});
-        this.vista.getBotonGestionarCuenta().addActionListener(evt->{//aca----------
+        this.vista.getBotonGestionarCuenta().addActionListener(evt->{
             String usuarioSeleccionado = this.vista.obtenerUsuarioSeleccionado();
-            System.out.println(usuarioSeleccionado);
             if(usuarioSeleccionado!=null){
                 vista.dispose();
                 Persona pSeleccionada = llamarPersonaSeleccionada(usuarioSeleccionado,buscarPersonasSinCuenta(manipulador));
@@ -43,15 +41,9 @@ public class ControladorPersona implements Buscador, VerificarDatos{
                     
                     if(verificarVehiculo(pantalla,marca,modelo,patente) && verificarContraseña(pantalla,contraseña)){
                         Vehiculo vehiculo = new Vehiculo(marca,modelo,patente);
-                        CuentaUsuario nuevaCuenta = new CuentaUsuario(pSeleccionada,contraseña,vehiculo);
-                        
-                        System.out.println(nuevaCuenta.getCuenta());
-                        System.out.println(nuevaCuenta.getVehiculos());
+                        CuentaUsuario nuevaCuenta = new CuentaUsuario(pSeleccionada,contraseña,vehiculo);//REVISAR ESTO
                         pantalla.dispose();
                         manipulador.cambiarParametroNoTieneCuenta(pSeleccionada,vehiculo,contraseña);
-                        Main.main(null);
-                        
-                        
                     }
                     
                     
@@ -60,32 +52,43 @@ public class ControladorPersona implements Buscador, VerificarDatos{
             }   
         });
     }
-    public List<Persona> buscarPersonasConCuenta(ManipuladorArchivosProlog manipulador){
-        List<Persona> conCuenta = new ArrayList<>();
-        return conCuenta;
-    }
     
     
-    
-    public void mostrarPersonas(ManipuladorArchivosProlog manipulador){
-        try{
+    public void mostrarPersonas(ManipuladorArchivosProlog manipulador) {
+        try {
             String nombreBuscar = vista.getTxtBusqueda().getText().toLowerCase();
-            List<Persona> usuarios = buscarPersonasSinCuenta(manipulador);
-            DefaultListModel<String> modeloLista = new DefaultListModel<>();
-            for (Persona u : usuarios) {
-                if (nombreBuscar.isEmpty() ||
-                    u.getNombre().toLowerCase().contains(nombreBuscar) ||
-                    u.getApellido().toLowerCase().contains(nombreBuscar)) {
 
-                    modeloLista.addElement(u.getNombre() + " " + u.getApellido() + " " + u.getDNI());//hacer metodo que hace mayuscula la primera letra
-                }
-            }
+            List<Persona> usuarios = buscarPersonasSinCuenta(manipulador);
+
+            DefaultListModel<String> modeloLista = usuarios.stream()
+
+                
+                .filter(u ->
+                    nombreBuscar.isEmpty() ||
+                    u.getNombre().toLowerCase().contains(nombreBuscar) ||
+                    u.getApellido().toLowerCase().contains(nombreBuscar)
+                )
+
+                
+                .map(u -> u.getNombre() + " " + u.getApellido() + " " + u.getDNI())
+
+                
+                .collect(Collector.of(
+                    DefaultListModel<String>::new,
+                    DefaultListModel::addElement,
+                    (m1, m2) -> { 
+                        for (int i = 0; i < m2.size(); i++) {m1.addElement(m2.get(i));}
+                        return m1; 
+                    }
+                ));
+
             vista.getListaUsuarios().setModel(modeloLista);
-        }
-        catch(Exception e){
+
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No se pudo realizar la busqueda");
         }
     }
+
     
     public Boolean verificarVehiculo(PantallaCrearCuenta pantalla,String marca, String modelo, String patente){
         if(marca.trim().isEmpty() || modelo.trim().isEmpty() || patente.trim().isEmpty()){
@@ -93,7 +96,6 @@ public class ControladorPersona implements Buscador, VerificarDatos{
             return false;
         }
         return true;
-            
     }
     
     public Boolean verificarContraseña(PantallaCrearCuenta pantalla, String contraseña){
@@ -134,7 +136,6 @@ public class ControladorPersona implements Buscador, VerificarDatos{
             Boolean cuenta = false;
             String tipoPersona = solucion.get("Tipo").toString().replace("\"", "");
             Persona personaSinCuenta = new Persona(nombre, apellido, legajo, dni, telefono, correo, tipoPersona, marca, modelo, patente, cuenta);
-            System.out.println(personaSinCuenta);
             sinCuenta.add(personaSinCuenta);
             
         }
@@ -146,12 +147,16 @@ public class ControladorPersona implements Buscador, VerificarDatos{
         Long dni = Long.parseLong(datos[2]);
         for(Persona p: listaPersonas){
             if(p.getDNI().equals(dni)){
-                System.out.println(p);
                 return p;
             }
         }
         return null;
-    } 
+    }
+    
+    public List<Persona> buscarPersonasConCuenta(ManipuladorArchivosProlog manipulador){
+        List<Persona> conCuenta = new ArrayList<>();
+        return conCuenta;
+    }
 }
     
     

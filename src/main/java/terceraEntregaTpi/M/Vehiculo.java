@@ -1,10 +1,10 @@
 package terceraEntregaTpi.M;
 public class Vehiculo {
-    private String marca;
-    private String modelo;
-    private String patente;
+    private final String marca;
+    private final String modelo;
+    private final String patente;
     
-
+//REFACTORIZADO
     public Vehiculo(String marca,String modelo,String patente) {
         this.patente = patente;
         this.marca = marca;
@@ -23,10 +23,6 @@ public class Vehiculo {
 
     public String toString() {
         return this.marca+" "+this.modelo+" "+this.patente  ;
-    }
-    
-    public String vehiculoConFormato() {
-        return this.marca+"_"+this.modelo+"_"+this.patente  ;
     }
 
 }

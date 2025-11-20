@@ -4,7 +4,7 @@
  */
 package terceraEntregaTpi.V;
 import terceraEntregaTpi.M.Persona;
-import terceraEntregaTpi.M.CuentaUsuario;
+
 
 /**
  *
@@ -14,9 +14,7 @@ public class PantallaMostrarCuenta extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(PantallaMostrarCuenta.class.getName());
 
-    /**
-     * Creates new form PantallaMostrarCuenta
-     */
+    
     public PantallaMostrarCuenta(Persona pSeleccionada, String contra, String saldo) {
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
