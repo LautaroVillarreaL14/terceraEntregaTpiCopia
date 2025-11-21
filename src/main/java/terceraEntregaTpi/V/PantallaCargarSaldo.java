@@ -27,7 +27,7 @@ public class PantallaCargarSaldo extends javax.swing.JFrame{
     }
     
 
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
@@ -81,19 +81,19 @@ public class PantallaCargarSaldo extends javax.swing.JFrame{
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
-    private void txtSaldoCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSaldoCargarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSaldoCargarActionPerformed
+    private void txtSaldoCargarActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    }
 
     
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    
     private javax.swing.JButton BtnConfirmarRecarga;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtSaldoCargar;
-    // End of variables declaration//GEN-END:variables
+    
 }

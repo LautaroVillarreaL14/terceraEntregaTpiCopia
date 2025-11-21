@@ -1,36 +1,31 @@
 package terceraEntregaTpi.C;
+
 import terceraEntregaTpi.V.PantallaMostrarUsuarios;
-import org.jpl7.*;
-import java.util.ArrayList;
 import terceraEntregaTpi.V.PantallaCrearCuenta;
 import java.util.List;
-import java.util.Map;
 import terceraEntregaTpi.M.Persona;
 import javax.swing.DefaultListModel;
 import terceraEntregaTpi.M.Vehiculo;
-import terceraEntregaTpi.M.CuentaUsuario;
 import terceraEntregaTpi.M.Buscador;
-import terceraEntregaTpi.M.ManipuladorArchivosProlog;
-import java.util.stream.Collector;
+import terceraEntregaTpi.M.RepositorioPersonas;
 
 
 
 
-public class ControladorPersona implements Buscador, VerificarDatos{
+public class ControladorPersona extends VerificarDatos implements Buscador{
     private final PantallaMostrarUsuarios vista;
-    private final ManipuladorArchivosProlog manipulador;
-    
-    
-    public ControladorPersona(PantallaMostrarUsuarios vista, ManipuladorArchivosProlog manipulador){
-        
+    private final RepositorioPersonas repositorio;
+
+
+    public ControladorPersona(PantallaMostrarUsuarios vista, RepositorioPersonas repositorio){
         this.vista = vista;
-        this.manipulador = manipulador;
-        this.vista.getBotonBuscar().addActionListener(e -> {mostrarPersonas(manipulador);});
+        this.repositorio = repositorio;
+        this.vista.getBotonBuscar().addActionListener(e -> {mostrarPersonas();});
         this.vista.getBotonGestionarCuenta().addActionListener(evt->{
             String usuarioSeleccionado = this.vista.obtenerUsuarioSeleccionado();
             if(usuarioSeleccionado!=null){
                 vista.dispose();
-                Persona pSeleccionada = llamarPersonaSeleccionada(usuarioSeleccionado,buscarListaPersonasSinCuenta(manipulador));
+                Persona pSeleccionada = llamarPersonaSeleccionada(usuarioSeleccionado,buscarListaPersonasSinCuenta());
                 PantallaCrearCuenta pantalla = new PantallaCrearCuenta(pSeleccionada.getNombre(),pSeleccionada.getApellido(),pSeleccionada.getLegajo(),pSeleccionada.getDNI(),pSeleccionada.getTelefono());
                 pantalla.setVisible(true);
                 pantalla.getBotonGuardar().addActionListener(tocar-> {
@@ -42,101 +37,54 @@ public class ControladorPersona implements Buscador, VerificarDatos{
                     
                     if(verificarVehiculo(pantalla,marca,modelo,patente) && verificarContraseña(pantalla,contraseña)){
                         Vehiculo vehiculo = new Vehiculo(marca,modelo,patente);
-                        CuentaUsuario nuevaCuenta = new CuentaUsuario(pSeleccionada,contraseña,vehiculo);//REVISAR ESTO
                         pantalla.dispose();
-                        manipulador.cambiarParametroNoTieneCuenta(pSeleccionada,vehiculo,contraseña);
+                        repositorio.cambiarParametroNoTieneCuenta(pSeleccionada,vehiculo,contraseña);
                     }
                     
                     
                     
                 });
-            }   
+            }
         });
     }
     
     
-    public void mostrarPersonas(ManipuladorArchivosProlog manipulador) {
+    public void mostrarPersonas() {
         try {
             String nombreBuscar = vista.getTxtBusqueda().getText().toLowerCase();
 
-            List<Persona> usuarios = buscarListaPersonasSinCuenta(manipulador);
+            List<Persona> usuarios = buscarListaPersonasSinCuenta();
 
-            DefaultListModel<String> modeloLista = usuarios.stream()
-
-                
+            DefaultListModel<String> modeloLista = new DefaultListModel<>();
+            usuarios.stream()
                 .filter(u ->
                     nombreBuscar.isEmpty() ||
                     u.getNombre().toLowerCase().contains(nombreBuscar) ||
                     u.getApellido().toLowerCase().contains(nombreBuscar)
                 )
-
-                
                 .map(u -> u.getNombre() + " " + u.getApellido() + " " + u.getDNI())
-
-                
-                .collect(Collector.of(
-                    DefaultListModel<String>::new,
-                    DefaultListModel::addElement,
-                    (m1, m2) -> { 
-                        for (int i = 0; i < m2.size(); i++) {m1.addElement(m2.get(i));}
-                        return m1; 
-                    }
-                ));
+                .forEach(modeloLista::addElement);
             vista.getListaUsuarios().setModel(modeloLista);
             
         }catch (Exception e) {vista.mostrarMensaje("No se pudo realizar la busqueda");}
     }
 
     
-    public Boolean verificarVehiculo(PantallaCrearCuenta pantalla,String marca, String modelo, String patente){
-        if(marca.trim().isEmpty() || modelo.trim().isEmpty() || patente.trim().isEmpty()){
-            pantalla.mostrarMensaje("Debe completar todos los campos");
-            return false;
-        }
-        return true;
-    }
     
-    public Boolean verificarContraseña(PantallaCrearCuenta pantalla, String contraseña){
-        if(contraseña.trim().isEmpty()){
-            pantalla.mostrarMensaje("Debe completar todos los campos");
-        }
-        return true;
-    }
-    
-    
-    
-    
-    
-       
-       
-    
-    public List<Persona> buscarListaPersonasSinCuenta(ManipuladorArchivosProlog manipulador){
-        List<Persona> sinCuenta = new ArrayList<>();
-        
-        if (!manipulador.abrirArchivoBaseDeConocimientoPersonas()) {
-            return sinCuenta;
-        }
-        
-        
-        Query buscar = new Query("usuario(Nombre, Apellido, Legajo, Dni, Telefono, Correo, Tipo, Marca, Modelo, Patente, Saldo, Contraseña, Cuenta)");
 
-        while(buscar.hasMoreSolutions()){
-            Map<String, Term> solucion = buscar.nextSolution();
-            String nombre = solucion.get("Nombre").toString().replace("\"", "");
-            String apellido = solucion.get("Apellido").toString().replace("\"", "");
-            Long legajo = Long.parseLong(solucion.get("Legajo").toString().replace("\"", ""));
-            Long dni = Long.parseLong(solucion.get("Dni").toString().replace("\"", ""));
-            Long telefono = Long.parseLong(solucion.get("Telefono").toString().replace("\"", ""));
-            String correo = solucion.get("Correo").toString().replace("\"", "");
-            String marca = solucion.get("Marca").toString().replace("\"", "");
-            String modelo = solucion.get("Modelo").toString().replace("\"", "");
-            String patente = solucion.get("Patente").toString().replace("\"", "");
-            Boolean cuenta = false;
-            String tipoPersona = solucion.get("Tipo").toString().replace("\"", "");
-            Persona personaSinCuenta = new Persona(nombre, apellido, legajo, dni, telefono, correo, tipoPersona, marca, modelo, patente, cuenta);
-            sinCuenta.add(personaSinCuenta);
-        }
-        return sinCuenta;
+    
+    
+    
+    
+    
+    
+    
+    
+       
+       
+    
+    public List<Persona> buscarListaPersonasSinCuenta(){
+        return repositorio.listarPersonasSinCuenta();
     }
     
     public Persona llamarPersonaSeleccionada(String datosPersona, List<Persona> listaPersonas){
@@ -150,9 +98,8 @@ public class ControladorPersona implements Buscador, VerificarDatos{
         return null;
     }
     
-    public List<Persona> buscarPersonasConCuenta(ManipuladorArchivosProlog manipulador){
-        List<Persona> conCuenta = new ArrayList<>();
-        return conCuenta;
+    public List<Persona> buscarPersonasConCuenta(){
+        return repositorio.listarPersonasConCuenta();
     }
 }
     

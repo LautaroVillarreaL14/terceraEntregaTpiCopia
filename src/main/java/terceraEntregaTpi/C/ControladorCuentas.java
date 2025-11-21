@@ -1,12 +1,9 @@
 package terceraEntregaTpi.C;
 import terceraEntregaTpi.V.PantallaMostrarUsuarios;
-import org.jpl7.*;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import terceraEntregaTpi.M.Persona;
 import javax.swing.DefaultListModel;
-import terceraEntregaTpi.M.ManipuladorArchivosProlog;
+import terceraEntregaTpi.M.RepositorioPersonas;
 import terceraEntregaTpi.M.Buscador;
 import terceraEntregaTpi.V.PantallaMostrarCuenta;
 import terceraEntregaTpi.V.PantallaCargarSaldo;
@@ -16,26 +13,25 @@ import terceraEntregaTpi.V.PantallaCargarSaldo;
 //Definimos la clase e implementamos la interface Buscador
 public class ControladorCuentas implements Buscador{
     private final PantallaMostrarUsuarios vista;
-    private final ManipuladorArchivosProlog manipulador;
-    
-    //Definimos el constructor y le pasamos como parametro la pantalla donde debe funcionar
-    public ControladorCuentas(PantallaMostrarUsuarios vista, ManipuladorArchivosProlog manipulador){
-        this.vista = vista;
-        this.manipulador = manipulador;
-        
+    private final RepositorioPersonas repositorio;
 
-        this.vista.getBotonBuscar().addActionListener(e->{mostrarPersonas(manipulador);}); 
+    //Definimos el constructor y le pasamos como parametro la pantalla donde debe funcionar
+    public ControladorCuentas(PantallaMostrarUsuarios vista, RepositorioPersonas repositorio){
+        this.vista = vista;
+        this.repositorio = repositorio;
+
+        this.vista.getBotonBuscar().addActionListener(e->{mostrarPersonas();}); 
         this.vista.getBotonGestionarCuenta().addActionListener(e->{
             String usuarioSeleccionado = this.vista.obtenerUsuarioSeleccionado();
             if(usuarioSeleccionado!=null){
                 vista.dispose();
-                Persona pSeleccionada = llamarPersonaSeleccionada(usuarioSeleccionado,buscarPersonasConCuenta(manipulador));
-                String contraseña = manipulador.obtenerContraseñaPorLegajo(pSeleccionada.getLegajo());
-                String saldo = manipulador.obtenerSaldoPorLegajo(pSeleccionada.getLegajo());
+                Persona pSeleccionada = llamarPersonaSeleccionada(usuarioSeleccionado,buscarPersonasConCuenta());
+                String contraseña = repositorio.obtenerContraseñaPorLegajo(pSeleccionada.getLegajo());
+                String saldo = repositorio.obtenerSaldoPorLegajo(pSeleccionada.getLegajo());
                 PantallaMostrarCuenta mostrarCuenta = new PantallaMostrarCuenta(pSeleccionada, contraseña, saldo);
                 mostrarCuenta.setVisible(true);
                 mostrarCuenta.getBotonRecargarSaldo().addActionListener(evt->{
-                    int saldoAnterior = java.lang.Integer.parseInt(manipulador.obtenerSaldoPorLegajo(pSeleccionada.getLegajo()));
+                    int saldoAnterior = java.lang.Integer.parseInt(repositorio.obtenerSaldoPorLegajo(pSeleccionada.getLegajo()));
                     PantallaCargarSaldo cargarSaldo = new PantallaCargarSaldo();
                     cargarSaldo.setVisible(true);
                     cargarSaldo.getBotonConfirmarRecarga().addActionListener(evento->{
@@ -43,7 +39,7 @@ public class ControladorCuentas implements Buscador{
                         int  saldoEntero = java.lang.Integer.parseInt(saldoString);
                         if(!saldoString.isEmpty() && saldoEntero>=0){
                             String nuevoSaldo = String.valueOf(saldoEntero+saldoAnterior);
-                            manipulador.cambiarSaldoCuenta(pSeleccionada, contraseña, nuevoSaldo);
+                            repositorio.cambiarSaldoCuenta(pSeleccionada, contraseña, nuevoSaldo);
                             cargarSaldo.mostrarMensaje("Saldo cargado con exito",nuevoSaldo);
                             cargarSaldo.dispose();
                         }
@@ -56,11 +52,10 @@ public class ControladorCuentas implements Buscador{
     }
     
     
-    public void mostrarPersonas(ManipuladorArchivosProlog manipulador) {
+    public void mostrarPersonas() {
         try {
             String nombreBuscar = vista.getTxtBusqueda().getText().toLowerCase();
-
-            List<Persona> usuarios = buscarPersonasConCuenta(manipulador);
+            List<Persona> usuarios = buscarPersonasConCuenta();
 
             DefaultListModel<String> modeloLista = new DefaultListModel<>();
             usuarios.stream()
@@ -77,37 +72,11 @@ public class ControladorCuentas implements Buscador{
         } catch (Exception e) {vista.mostrarMensaje("No se pudo realizar la búsqueda");}
     }
 
-    public List<Persona> buscarListaPersonasSinCuenta(ManipuladorArchivosProlog manipulador){
-        List<Persona> sinCuenta = new ArrayList<>();
-        return sinCuenta;
+    public List<Persona> buscarListaPersonasSinCuenta(){
+        return repositorio.listarPersonasSinCuenta();
     }
-    public List<Persona> buscarPersonasConCuenta(ManipuladorArchivosProlog manipulador){
-        List<Persona> conCuenta = new ArrayList<>();
-        if (!manipulador.abrirArchivoBaseDeConocimientoPersonas()) {
-            return conCuenta;
-        }
-        Query buscar = new Query("usuario(Nombre, Apellido, Legajo, Dni, Telefono, Correo, Tipo, Marca, Modelo, Patente, Saldo, Contraseña, true)");
-        while(buscar.hasMoreSolutions()){
-            Map<String, Term> solucion = buscar.nextSolution();
-            String nombre = solucion.get("Nombre").toString().replace("\"", "");
-            String apellido = solucion.get("Apellido").toString().replace("\"", "");
-            Long legajo = Long.parseLong(solucion.get("Legajo").toString().replace("\"", ""));
-            Long dni = Long.parseLong(solucion.get("Dni").toString().replace("\"", ""));
-            Long telefono = Long.parseLong(solucion.get("Telefono").toString().replace("\"", ""));
-            String correo = solucion.get("Correo").toString().replace("\"", "");
-            String tipoPersona = solucion.get("Tipo").toString().replace("\"", "");
-            String marca = solucion.get("Marca").toString().replace("\"", "");
-            String modelo = solucion.get("Modelo").toString().replace("\"", "");
-            String patente = solucion.get("Patente").toString().replace("\"", "");
-            String contraseña = solucion.get("Contraseña").toString().replace("\"", "");
-            Boolean cuenta = true;
-            
-            Persona personaConCuenta = new Persona(nombre, apellido, legajo, dni, telefono, correo, tipoPersona, marca, modelo, patente, cuenta);
-            conCuenta.add(personaConCuenta);
-            
-        }
-        
-        return conCuenta;
+    public List<Persona> buscarPersonasConCuenta(){
+        return repositorio.listarPersonasConCuenta();
     }
     public Persona llamarPersonaSeleccionada(String usuario, List<Persona> listaPersonas){
         String[] datos = usuario.split(" ");

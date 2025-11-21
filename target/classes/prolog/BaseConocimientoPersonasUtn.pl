@@ -1,8 +1,6 @@
 :- dynamic usuario/13.
 
 usuario(hernan, villalba, 1041, 80123456, 1178901211, hernan_villalba_email_com, estudiante, "", "", "", '0', "", false).
-usuario(damian, correa, 1043, 82345678, 1190123413, damian_correa_email_com, nodocente, "", "", "", '0', "", false).
-usuario(bianca, salazar, 1044, 83456789, 1134564514, bianca_salazar_email_com, estudiante, "", "", "", '0', "", false).
 usuario(jorge, pereyra, 1045, 84567890, 1145675615, jorge_pereyra_email_com, docente, "", "", "", '0', "", false).
 usuario(solange, ayala, 1046, 85678901, 1156786716, solange_ayala_email_com, estudiante, "", "", "", '0', "", false).
 usuario(facundo, oliva, 1047, 86789012, 1167897817, facundo_oliva_email_com, estudiante, "", "", "", '0', "", false).
@@ -23,4 +21,6 @@ usuario(benjamin, farina, 1039, 78901234, 1156789009, benjamin_farina_email_com,
 usuario(mariano, aguirre, 1037, 76789012, 1134567807, mariano_aguirre_email_com, docente, asasd, sad, 'cxc  xcv', '0', '234', true).
 usuario(priscila, ortega, 1042, 81234567, 1189012312, priscila_ortega_email_com, estudiante, sdcx, tryrv, xcvdsf, '0', '12323sf34', true).
 usuario(patricia, hernandez, 1054, 93456789, 1167894524, patricia_hernandez_email_com, docente, werwer, sdfdsfd, dsfdsf, '8567', '2343424', true).
+usuario(damian, correa, 1043, 82345678, 1190123413, damian_correa_email_com, nodocente, 'asd asd', 'asdsw wqe', 'd234 ', '0', '12312', true).
+usuario(bianca, salazar, 1044, 83456789, 1134564514, bianca_salazar_email_com, estudiante, '3rwe', werdf, sdfwe, '0', '3245345', true).
 
