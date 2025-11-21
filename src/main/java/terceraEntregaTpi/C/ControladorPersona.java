@@ -12,7 +12,6 @@ import terceraEntregaTpi.M.Vehiculo;
 import terceraEntregaTpi.M.CuentaUsuario;
 import terceraEntregaTpi.M.Buscador;
 import terceraEntregaTpi.M.ManipuladorArchivosProlog;
-import terceraEntregaTpi.M.VerificarDatos;
 import java.util.stream.Collector;
 import terceraEntregaTpi.V.PantallaMostrarCuenta;
 

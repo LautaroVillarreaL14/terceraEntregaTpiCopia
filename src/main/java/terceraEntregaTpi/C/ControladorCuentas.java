@@ -40,7 +40,7 @@ public class ControladorCuentas implements Buscador{
                         int  saldoEntero = java.lang.Integer.parseInt(saldoString);
                         if(!saldoString.isEmpty() && saldoEntero>=0){
                             String nuevoSaldo = String.valueOf(saldoEntero+saldoAnterior);
-                            manipulador.CambiarSaldoCuenta(pSeleccionada, contraseña, nuevoSaldo);
+                            manipulador.cambiarSaldoCuenta(pSeleccionada, contraseña, nuevoSaldo);
                             cargarSaldo.mostrarMensaje("Saldo cargado con exito",nuevoSaldo);
                             cargarSaldo.dispose();
                         }

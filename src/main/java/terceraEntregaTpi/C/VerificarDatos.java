@@ -1,4 +1,4 @@
-package terceraEntregaTpi.M;
+package terceraEntregaTpi.C;
 
 import terceraEntregaTpi.V.PantallaCrearCuenta;
 

@@ -1,5 +1,4 @@
 package terceraEntregaTpi.M;
-import javax.swing.JOptionPane;
 import org.jpl7.Term;
 import org.jpl7.Query;
 
@@ -103,7 +102,7 @@ public class ManipuladorArchivosProlog {
         } catch (Exception e) {return null;}
     }
     
-    public void CambiarSaldoCuenta(Persona pSeleccionada, String contra,String nuevoSaldo){
+    public void cambiarSaldoCuenta(Persona pSeleccionada, String contra,String nuevoSaldo){
         String nombre = pSeleccionada.getNombre();
         String apellido = pSeleccionada.getApellido();
         Long legajo = pSeleccionada.getLegajo();

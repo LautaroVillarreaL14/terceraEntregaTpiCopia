@@ -1,16 +1,11 @@
 package terceraEntregaTpi.V;
 import javax.swing.text.*;
-
+//CLASE CON PRINCIPIO DE RESPOSABILIDAD UNICA(IGUAL QUE TODAS LAS PANTALLAS)
 public class FiltroNumericoRecargaDeSaldo extends DocumentFilter {
 
     
-    public void insertString(FilterBypass fb, int offset, String text, AttributeSet attr)
-            throws BadLocationException {
-        
-        if (text != null && text.matches("\\d+")) {
-            super.insertString(fb, offset, text, attr);
-        }
-        
+    public void insertString(FilterBypass fb, int offset, String text, AttributeSet attr) throws BadLocationException {
+        if (text != null && text.matches("\\d+")) {super.insertString(fb, offset, text, attr);}
     }
 
     
