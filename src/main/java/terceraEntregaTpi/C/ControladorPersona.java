@@ -7,13 +7,12 @@ import java.util.List;
 import java.util.Map;
 import terceraEntregaTpi.M.Persona;
 import javax.swing.DefaultListModel;
-import javax.swing.JOptionPane;
 import terceraEntregaTpi.M.Vehiculo;
 import terceraEntregaTpi.M.CuentaUsuario;
 import terceraEntregaTpi.M.Buscador;
 import terceraEntregaTpi.M.ManipuladorArchivosProlog;
 import java.util.stream.Collector;
-import terceraEntregaTpi.V.PantallaMostrarCuenta;
+
 
 
 
