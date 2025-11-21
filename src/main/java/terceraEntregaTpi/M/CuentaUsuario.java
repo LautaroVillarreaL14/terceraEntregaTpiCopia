@@ -1,7 +1,7 @@
 package terceraEntregaTpi.M;
 import java.util.ArrayList;
 
-//REFACTORIZADA
+
 public class CuentaUsuario{
     final String nombreUsuario;   
     final String apellidoUsuario;
@@ -12,8 +12,7 @@ public class CuentaUsuario{
     
 
     public CuentaUsuario(Persona persona, String contraseña,Vehiculo vehiculo) {
-        vehiculos = new ArrayList<>(); 
-        //recargas = new ArrayList<>();  
+        vehiculos = new ArrayList<>();  
         vehiculos.add(vehiculo);
         this.nombreUsuario = persona.getNombre();
         this.apellidoUsuario = persona.getApellido();       

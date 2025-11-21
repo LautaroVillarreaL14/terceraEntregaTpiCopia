@@ -12,7 +12,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.release>21</maven.compiler.release>
+        <maven.compiler.release>25</maven.compiler.release>
 
         <!-- Ruta donde tenés las DLL de JPL -->
         <prolog.dir>${project.basedir}/prolog</prolog.dir>
@@ -34,7 +34,8 @@
             <artifactId>jpl</artifactId>
             <version>7.6.0</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/libs/jpl.jar</systemPath>
+            <systemPath>C:/Users/lautaro/Desktop/terceraEntregaTpiCopia/libs/jpl.jar</systemPath>
+
         </dependency>
 
     </dependencies>

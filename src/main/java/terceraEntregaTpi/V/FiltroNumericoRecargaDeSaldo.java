@@ -14,24 +14,16 @@ public class FiltroNumericoRecargaDeSaldo extends DocumentFilter {
     }
 
     
-    public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attr)
-            throws BadLocationException {
-
+    public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attr) throws BadLocationException{
         if (text == null) {
-            // caso borrar → permitir
             super.replace(fb, offset, length, "", attr);
             return;
         }
-
-        if (text.matches("\\d+")) {
-            super.replace(fb, offset, length, text, attr);
-        }
-        
+        if (text.matches("\\d+")) {super.replace(fb, offset, length, text, attr);}
     }
 
     
-    public void remove(FilterBypass fb, int offset, int length)
-            throws BadLocationException {
+    public void remove(FilterBypass fb, int offset, int length) throws BadLocationException {
         super.remove(fb, offset, length); 
     }
 }

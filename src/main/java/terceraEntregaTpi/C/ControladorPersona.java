@@ -14,9 +14,10 @@ import terceraEntregaTpi.M.Buscador;
 import terceraEntregaTpi.M.ManipuladorArchivosProlog;
 import terceraEntregaTpi.M.VerificarDatos;
 import java.util.stream.Collector;
+import terceraEntregaTpi.V.PantallaMostrarCuenta;
 
 
-//ACOMODAR EL PROBLEMA DE QUE LLAMO A PERSONAS USUARIO Y A USUARIOS PERSONA(CREO)
+
 public class ControladorPersona implements Buscador, VerificarDatos{
     private final PantallaMostrarUsuarios vista;
     
@@ -29,7 +30,7 @@ public class ControladorPersona implements Buscador, VerificarDatos{
             String usuarioSeleccionado = this.vista.obtenerUsuarioSeleccionado();
             if(usuarioSeleccionado!=null){
                 vista.dispose();
-                Persona pSeleccionada = llamarPersonaSeleccionada(usuarioSeleccionado,buscarPersonasSinCuenta(manipulador));
+                Persona pSeleccionada = llamarPersonaSeleccionada(usuarioSeleccionado,buscarListaPersonasSinCuenta(manipulador));
                 PantallaCrearCuenta pantalla = new PantallaCrearCuenta(pSeleccionada.getNombre(),pSeleccionada.getApellido(),pSeleccionada.getLegajo(),pSeleccionada.getDNI(),pSeleccionada.getTelefono());
                 pantalla.setVisible(true);
                 pantalla.getBotonGuardar().addActionListener(tocar-> {
@@ -58,7 +59,7 @@ public class ControladorPersona implements Buscador, VerificarDatos{
         try {
             String nombreBuscar = vista.getTxtBusqueda().getText().toLowerCase();
 
-            List<Persona> usuarios = buscarPersonasSinCuenta(manipulador);
+            List<Persona> usuarios = buscarListaPersonasSinCuenta(manipulador);
 
             DefaultListModel<String> modeloLista = usuarios.stream()
 
@@ -81,18 +82,15 @@ public class ControladorPersona implements Buscador, VerificarDatos{
                         return m1; 
                     }
                 ));
-
             vista.getListaUsuarios().setModel(modeloLista);
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "No se pudo realizar la busqueda");
-        }
+            
+        }catch (Exception e) {vista.mostrarMensaje("No se pudo realizar la busqueda");}
     }
 
     
     public Boolean verificarVehiculo(PantallaCrearCuenta pantalla,String marca, String modelo, String patente){
         if(marca.trim().isEmpty() || modelo.trim().isEmpty() || patente.trim().isEmpty()){
-            JOptionPane.showMessageDialog(pantalla,"Debe completar todos los campos");
+            pantalla.mostrarMensaje("Debe completar todos los campos");
             return false;
         }
         return true;
@@ -100,7 +98,7 @@ public class ControladorPersona implements Buscador, VerificarDatos{
     
     public Boolean verificarContraseña(PantallaCrearCuenta pantalla, String contraseña){
         if(contraseña.trim().isEmpty()){
-            JOptionPane.showMessageDialog(pantalla,"Debe completar todos los campos");
+            pantalla.mostrarMensaje("Debe completar todos los campos");
         }
         return true;
     }
@@ -112,7 +110,7 @@ public class ControladorPersona implements Buscador, VerificarDatos{
        
        
     
-    public List<Persona> buscarPersonasSinCuenta(ManipuladorArchivosProlog manipulador){
+    public List<Persona> buscarListaPersonasSinCuenta(ManipuladorArchivosProlog manipulador){
         List<Persona> sinCuenta = new ArrayList<>();
         
         if (!manipulador.abrirArchivoBaseDeConocimientoPersonas()) {
@@ -137,13 +135,12 @@ public class ControladorPersona implements Buscador, VerificarDatos{
             String tipoPersona = solucion.get("Tipo").toString().replace("\"", "");
             Persona personaSinCuenta = new Persona(nombre, apellido, legajo, dni, telefono, correo, tipoPersona, marca, modelo, patente, cuenta);
             sinCuenta.add(personaSinCuenta);
-            
         }
         return sinCuenta;
     }
     
-    public Persona llamarPersonaSeleccionada(String usuario, List<Persona> listaPersonas){
-        String[] datos = usuario.split(" ");
+    public Persona llamarPersonaSeleccionada(String datosPersona, List<Persona> listaPersonas){
+        String[] datos = datosPersona.split(" ");
         Long dni = Long.parseLong(datos[2]);
         for(Persona p: listaPersonas){
             if(p.getDNI().equals(dni)){

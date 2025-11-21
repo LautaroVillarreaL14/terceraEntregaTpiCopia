@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package terceraEntregaTpi.V;
+import javax.swing.JOptionPane;
 import terceraEntregaTpi.M.Persona;
 
 
@@ -37,9 +38,10 @@ public class PantallaMostrarCuenta extends javax.swing.JFrame {
         txtMarcaVehiculo.setText(pSeleccionada.getMarcaVehiculo());
         txtModeloVehiculo.setText(pSeleccionada.getModeloVehiculo());
         txtPatenteVehiculo.setText(pSeleccionada.getPatenteVehiculo());
-        txtSaldo.setText(saldo);
-        
+        txtSaldo.setText(saldo); 
     }
+    
+    
 
     
     @SuppressWarnings("unchecked")

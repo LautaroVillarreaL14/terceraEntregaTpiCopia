@@ -1,12 +1,11 @@
 package terceraEntregaTpi.M;
-
 import javax.swing.JOptionPane;
 import org.jpl7.Term;
 import org.jpl7.Query;
 
 
 
-//REFACTORIZADA. SI QUIEREN REVISENLA
+
 
 public class ManipuladorArchivosProlog {
     public Boolean abrirArchivoBaseDeConocimientoPersonas(){
@@ -17,10 +16,7 @@ public class ManipuladorArchivosProlog {
         
         Query cargarArchivo = new Query("consult('" + rutaArchivo + "')");
         return cargarArchivo.hasSolution();
-        } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Ocurrio un error inesperado");
-        return false;
-        }
+        } catch (Exception e) {return false;}
     }
     
     public Boolean abrirArchivoBaseConocimientoCuentasUsuarios(){
@@ -28,10 +24,7 @@ public class ManipuladorArchivosProlog {
             String rutaArchivo = ManipuladorArchivosProlog.class.getClassLoader().getResource("prolog/BaseConocimientoCuentasUsuarios.pl").getPath();
             Query consulta = new Query("consult('" + rutaArchivo +"')");
             return consulta.hasSolution();
-        }catch (Exception e){
-            JOptionPane.showMessageDialog(null, "Ocurrio un error inesperado");
-            return false;
-        }
+        }catch (Exception e){return false;}
     }
     
     
@@ -50,10 +43,7 @@ public class ManipuladorArchivosProlog {
         String contraseña = contra;
         int saldo = 0;
         
-        if(!abrirArchivoBaseDeConocimientoPersonas()){
-            JOptionPane.showMessageDialog(null, "No se pudo abrir la base de conocimiento");
-            return;
-        }
+        if(!abrirArchivoBaseDeConocimientoPersonas()){return;}
         
         String hechoViejo = String.format("usuario(_,_,%d,_,_,_,_,_,_,_,_,_,false)",legajo);
         

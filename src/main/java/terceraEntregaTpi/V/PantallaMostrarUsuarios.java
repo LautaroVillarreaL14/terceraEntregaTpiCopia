@@ -4,6 +4,8 @@
  */
 package terceraEntregaTpi.V;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author lautaro
@@ -38,6 +40,10 @@ public class PantallaMostrarUsuarios extends javax.swing.JFrame {
     public javax.swing.JList<String> getListaUsuarios(){
         return lstUsuarios;
     }
+    public void mostrarMensaje(String mensaje){
+        JOptionPane.showMessageDialog(null,mensaje);
+    }
+    
     
 
     /**

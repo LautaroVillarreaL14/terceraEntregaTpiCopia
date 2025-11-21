@@ -12,7 +12,6 @@ terceraEntregaTpi\V\PantallaMostrarCuenta$5.class
 terceraEntregaTpi\V\PantallaCrearCuenta$5.class
 terceraEntregaTpi\V\FiltroNumericoRecargaDeSaldo.class
 terceraEntregaTpi\V\PantallaMostrarCuenta.class
-terceraEntregaTpi\M\Recarga.class
 terceraEntregaTpi\V\PantallaPrincipal.class
 terceraEntregaTpi\V\PantallaMostrarCuenta$6.class
 terceraEntregaTpi\V\PantallaCargarSaldo.class
@@ -31,7 +30,6 @@ terceraEntregaTpi\V\PantallaCrearCuenta$6.class
 terceraEntregaTpi\M\Buscador.class
 terceraEntregaTpi\V\PantallaMostrarCuenta$9.class
 terceraEntregaTpi\M\Persona.class
-terceraEntregaTpi\M\TipoPersona.class
 terceraEntregaTpi\V\PantallaCrearCuenta$4.class
 terceraEntregaTpi\M\CuentaUsuario.class
 terceraEntregaTpi\M\Vehiculo.class

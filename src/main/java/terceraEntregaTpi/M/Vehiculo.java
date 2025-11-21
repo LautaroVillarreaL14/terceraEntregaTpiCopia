@@ -4,7 +4,7 @@ public class Vehiculo {
     private final String modelo;
     private final String patente;
     
-//REFACTORIZADO
+
     public Vehiculo(String marca,String modelo,String patente) {
         this.patente = patente;
         this.marca = marca;

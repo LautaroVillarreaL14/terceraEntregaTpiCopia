@@ -1,5 +1,4 @@
 package terceraEntregaTpi.M;
-//SACAR el toString DEL FINAL SI AFECTA A NADA
 
 public class Persona{
     private final String nombre;       
@@ -12,7 +11,7 @@ public class Persona{
     private String marcaVehiculo;
     private String modelovehiculo;
     private String patenteVehiculo;
-    private Boolean cuenta;     
+    private  Boolean cuenta;     
    
    
     

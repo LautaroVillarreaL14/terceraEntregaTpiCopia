@@ -4,6 +4,8 @@
  */
 package terceraEntregaTpi.V;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author lautaro
@@ -55,6 +57,9 @@ public class PantallaCrearCuenta extends javax.swing.JFrame {
     
     public javax.swing.JTextField getTxtContraseña(){
         return txtContraseña;
+    }
+    public void mostrarMensaje(String mensaje){
+        JOptionPane.showMessageDialog(this,mensaje);
     }
    
     

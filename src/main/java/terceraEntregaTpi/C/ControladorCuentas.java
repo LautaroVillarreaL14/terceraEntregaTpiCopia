@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 import terceraEntregaTpi.M.Persona;
 import javax.swing.DefaultListModel;
-import javax.swing.JOptionPane;
 import terceraEntregaTpi.M.ManipuladorArchivosProlog;
 import terceraEntregaTpi.M.Buscador;
 import terceraEntregaTpi.V.PantallaMostrarCuenta;
@@ -42,7 +41,7 @@ public class ControladorCuentas implements Buscador{
                         if(!saldoString.isEmpty() && saldoEntero>=0){
                             String nuevoSaldo = String.valueOf(saldoEntero+saldoAnterior);
                             manipulador.CambiarSaldoCuenta(pSeleccionada, contraseña, nuevoSaldo);
-                            JOptionPane.showMessageDialog(null, "Saldo cargado con exito \n Nuevo saldo: $"+nuevoSaldo);
+                            cargarSaldo.mostrarMensaje("Saldo cargado con exito",nuevoSaldo);
                             cargarSaldo.dispose();
                         }
                     });
@@ -69,13 +68,13 @@ public class ControladorCuentas implements Buscador{
             if (modeloLista.size() > 0) {
                 vista.getListaUsuarios().setModel(modeloLista);
             } else {
-                JOptionPane.showMessageDialog(null, "No hay cuentas creadas");
+                vista.mostrarMensaje("No hay cuentas creadas");
             }
 
-        } catch (Exception e) {JOptionPane.showMessageDialog(null, "No se pudo realizar la búsqueda");}
+        } catch (Exception e) {vista.mostrarMensaje("No se pudo realizar la búsqueda");}
     }
 
-    public List<Persona> buscarPersonasSinCuenta(ManipuladorArchivosProlog manipulador){
+    public List<Persona> buscarListaPersonasSinCuenta(ManipuladorArchivosProlog manipulador){
         List<Persona> sinCuenta = new ArrayList<>();
         return sinCuenta;
     }
