@@ -19,11 +19,13 @@ import terceraEntregaTpi.V.PantallaMostrarCuenta;
 
 public class ControladorPersona implements Buscador, VerificarDatos{
     private final PantallaMostrarUsuarios vista;
+    private final ManipuladorArchivosProlog manipulador;
     
     
-    public ControladorPersona(PantallaMostrarUsuarios vista){
-        ManipuladorArchivosProlog manipulador = new ManipuladorArchivosProlog();
+    public ControladorPersona(PantallaMostrarUsuarios vista, ManipuladorArchivosProlog manipulador){
+        
         this.vista = vista;
+        this.manipulador = manipulador;
         this.vista.getBotonBuscar().addActionListener(e -> {mostrarPersonas(manipulador);});
         this.vista.getBotonGestionarCuenta().addActionListener(evt->{
             String usuarioSeleccionado = this.vista.obtenerUsuarioSeleccionado();

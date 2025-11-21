@@ -12,14 +12,17 @@ import terceraEntregaTpi.V.PantallaMostrarCuenta;
 import terceraEntregaTpi.V.PantallaCargarSaldo;
 
 
+
+//Definimos la clase e implementamos la interface Buscador
 public class ControladorCuentas implements Buscador{
     private final PantallaMostrarUsuarios vista;
+    private final ManipuladorArchivosProlog manipulador;
     
-    
-    public ControladorCuentas(PantallaMostrarUsuarios vista){
+    //Definimos el constructor y le pasamos como parametro la pantalla donde debe funcionar
+    public ControladorCuentas(PantallaMostrarUsuarios vista, ManipuladorArchivosProlog manipulador){
         this.vista = vista;
-
-        ManipuladorArchivosProlog manipulador = new ManipuladorArchivosProlog();
+        this.manipulador = manipulador;
+        
 
         this.vista.getBotonBuscar().addActionListener(e->{mostrarPersonas(manipulador);}); 
         this.vista.getBotonGestionarCuenta().addActionListener(e->{
