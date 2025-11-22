@@ -39,8 +39,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 133, 29));
         jPanel1.setForeground(new java.awt.Color(255, 153, 0));
 
-        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Roboto", 0, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("UTN");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -48,41 +49,47 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(146, 146, 146)
+                .addGap(65, 65, 65)
                 .addComponent(jLabel1)
-                .addContainerGap(590, Short.MAX_VALUE))
+                .addContainerGap(231, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(17, 17, 17)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 830, -1));
+        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 390, -1));
 
+        botonNuevaCuenta.setBackground(new java.awt.Color(255, 133, 29));
         botonNuevaCuenta.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        botonNuevaCuenta.setForeground(new java.awt.Color(255, 255, 255));
         botonNuevaCuenta.setText("Nueva Cuenta");
+        botonNuevaCuenta.setBorderPainted(false);
         botonNuevaCuenta.setFocusPainted(false);
         botonNuevaCuenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonNuevaCuentaActionPerformed(evt);
             }
         });
-        jPanel2.add(botonNuevaCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 140, -1));
+        jPanel2.add(botonNuevaCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 140, -1));
         botonNuevaCuenta.getAccessibleContext().setAccessibleName("Jbutton2");
 
+        BotonGestionarCuentas.setBackground(new java.awt.Color(255, 133, 29));
         BotonGestionarCuentas.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        BotonGestionarCuentas.setForeground(new java.awt.Color(255, 255, 255));
         BotonGestionarCuentas.setText("Cuentas");
+        BotonGestionarCuentas.setBorderPainted(false);
         BotonGestionarCuentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonGestionarCuentasActionPerformed(evt);
             }
         });
-        jPanel2.add(BotonGestionarCuentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 140, -1));
+        jPanel2.add(BotonGestionarCuentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 140, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -20, 410, 310));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -20, 250, 310));
         jPanel2.getAccessibleContext().setAccessibleName("");
 
         pack();

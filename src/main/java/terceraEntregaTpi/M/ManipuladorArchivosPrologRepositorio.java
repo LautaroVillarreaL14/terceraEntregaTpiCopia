@@ -1,5 +1,4 @@
 package terceraEntregaTpi.M;
-
 import org.jpl7.Query;
 import org.jpl7.Term;
 import java.util.ArrayList;
@@ -7,18 +6,18 @@ import java.util.List;
 import java.util.Map;
 
 public class ManipuladorArchivosPrologRepositorio implements RepositorioPersonas {
-    private final ManipuladorArchivosProlog delegado;
+    private final ManipuladorArchivosProlog manipulador;
 
-    public ManipuladorArchivosPrologRepositorio(ManipuladorArchivosProlog delegado) {
-        this.delegado = delegado;
+    public ManipuladorArchivosPrologRepositorio(ManipuladorArchivosProlog manipulador) {
+        this.manipulador = manipulador;
     }
 
-    @Override
+
     public List<Persona> listarPersonasSinCuenta() {
         List<Persona> sinCuenta = new ArrayList<>();
-        if (!delegado.abrirArchivoBaseDeConocimientoPersonas()) return sinCuenta;
+        if (!manipulador.abrirArchivoBaseDeConocimientoPersonas()) return sinCuenta;
+        Query buscar = new Query("usuario(Nombre, Apellido, Legajo, Dni, Telefono, Correo, Tipo, Marca, Modelo, Patente, Saldo, Contraseña, false)");
 
-        Query buscar = new Query("usuario(Nombre, Apellido, Legajo, Dni, Telefono, Correo, Tipo, Marca, Modelo, Patente, Saldo, Contraseña, Cuenta)");
         while (buscar.hasMoreSolutions()) {
             Map<String, Term> solucion = buscar.nextSolution();
             String nombre = solucion.get("Nombre").toString().replace("\"", "");
@@ -35,15 +34,14 @@ public class ManipuladorArchivosPrologRepositorio implements RepositorioPersonas
             Persona personaSinCuenta = new Persona(nombre, apellido, legajo, dni, telefono, correo, tipoPersona, marca, modelo, patente, cuenta);
             sinCuenta.add(personaSinCuenta);
         }
-
         return sinCuenta;
     }
 
-    @Override
+    
     public List<Persona> listarPersonasConCuenta() {
         List<Persona> conCuenta = new ArrayList<>();
-        if (!delegado.abrirArchivoBaseDeConocimientoPersonas()) return conCuenta;
-
+        if (!manipulador.abrirArchivoBaseDeConocimientoPersonas()) return conCuenta;
+        
         Query buscar = new Query("usuario(Nombre, Apellido, Legajo, Dni, Telefono, Correo, Tipo, Marca, Modelo, Patente, Saldo, Contraseña, true)");
         while (buscar.hasMoreSolutions()) {
             Map<String, Term> solucion = buscar.nextSolution();
@@ -61,27 +59,23 @@ public class ManipuladorArchivosPrologRepositorio implements RepositorioPersonas
             Persona personaConCuenta = new Persona(nombre, apellido, legajo, dni, telefono, correo, tipoPersona, marca, modelo, patente, cuenta);
             conCuenta.add(personaConCuenta);
         }
-
         return conCuenta;
     }
 
-    @Override
+    
     public String obtenerContraseñaPorLegajo(Long legajo) {
-        return delegado.obtenerContraseñaPorLegajo(legajo);
+        return manipulador.obtenerContraseñaPorLegajo(legajo);
     }
 
-    @Override
     public String obtenerSaldoPorLegajo(Long legajo) {
-        return delegado.obtenerSaldoPorLegajo(legajo);
+        return manipulador.obtenerSaldoPorLegajo(legajo);
     }
 
-    @Override
     public void cambiarSaldoCuenta(Persona pSeleccionada, String contra, String nuevoSaldo) {
-        delegado.cambiarSaldoCuenta(pSeleccionada, contra, nuevoSaldo);
+        manipulador.cambiarSaldoCuenta(pSeleccionada, contra, nuevoSaldo);
     }
 
-    @Override
     public void cambiarParametroNoTieneCuenta(Persona pSeleccionada, Vehiculo vehiculo, String contra) {
-        delegado.cambiarParametroNoTieneCuenta(pSeleccionada, vehiculo, contra);
+        manipulador.cambiarParametroNoTieneCuenta(pSeleccionada, vehiculo, contra);
     }
 }

@@ -1,12 +1,7 @@
 package terceraEntregaTpi.C;
-
 import java.util.stream.Stream;
-
-
-
 import terceraEntregaTpi.V.PantallaCrearCuenta;
 
-//No la hacemos abstracta para que cumpla el principio de sustitucion de Liskov.
 public class VerificarDatos {
     public Boolean verificarVehiculo(PantallaCrearCuenta pantalla,String marca, String modelo, String patente){
         boolean hayInvalida = Stream.of(marca, modelo, patente).anyMatch(p -> !verificarCadenaValida(p));
@@ -23,6 +18,7 @@ public class VerificarDatos {
         }
         return true;
     }
+    
     public Boolean verificarCadenaValida(String c) {
         if (c.trim().isEmpty() || c.contains(" ")) {
             return false;

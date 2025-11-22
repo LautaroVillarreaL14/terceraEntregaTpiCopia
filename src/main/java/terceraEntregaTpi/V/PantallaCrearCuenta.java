@@ -77,8 +77,6 @@ public class PantallaCrearCuenta extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        Titulo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         txtNombreTomadoPorBoton = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -98,37 +96,17 @@ public class PantallaCrearCuenta extends javax.swing.JFrame {
         BotonGuardar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         txtContraseña = new javax.swing.JPasswordField();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setMinimumSize(new java.awt.Dimension(310, 550));
+        jPanel1.setPreferredSize(new java.awt.Dimension(310, 510));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel2.setBackground(new java.awt.Color(255, 153, 0));
-        jPanel2.setPreferredSize(new java.awt.Dimension(400, 80));
-
-        Titulo.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
-        Titulo.setText("Usuario");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(162, Short.MAX_VALUE)
-                .addComponent(Titulo)
-                .addGap(156, 156, 156))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(Titulo)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, -1));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel1.setText("Nombre:");
@@ -136,7 +114,7 @@ public class PantallaCrearCuenta extends javax.swing.JFrame {
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
         txtNombreTomadoPorBoton.setEditable(false);
         txtNombreTomadoPorBoton.addActionListener(new java.awt.event.ActionListener() {
@@ -144,7 +122,7 @@ public class PantallaCrearCuenta extends javax.swing.JFrame {
                 txtNombreTomadoPorBotonActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNombreTomadoPorBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 110, -1));
+        jPanel1.add(txtNombreTomadoPorBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 110, -1));
 
         jLabel2.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel2.setText("DNI:");
@@ -152,10 +130,10 @@ public class PantallaCrearCuenta extends javax.swing.JFrame {
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
 
         txtApellidoTomadoPorBoton.setEditable(false);
-        jPanel1.add(txtApellidoTomadoPorBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 110, -1));
+        jPanel1.add(txtApellidoTomadoPorBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 110, -1));
 
         jLabel3.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel3.setText("Legajo:");
@@ -163,7 +141,7 @@ public class PantallaCrearCuenta extends javax.swing.JFrame {
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel4.setText("Apellido:");
@@ -171,7 +149,7 @@ public class PantallaCrearCuenta extends javax.swing.JFrame {
         jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
 
         txtLegajoTomadoPorBoton.setEditable(false);
         txtLegajoTomadoPorBoton.addActionListener(new java.awt.event.ActionListener() {
@@ -179,7 +157,7 @@ public class PantallaCrearCuenta extends javax.swing.JFrame {
                 txtLegajoTomadoPorBotonActionPerformed(evt);
             }
         });
-        jPanel1.add(txtLegajoTomadoPorBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 110, -1));
+        jPanel1.add(txtLegajoTomadoPorBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 110, -1));
 
         txtTelefonoTomadoPorBoton.setEditable(false);
         txtTelefonoTomadoPorBoton.addActionListener(new java.awt.event.ActionListener() {
@@ -187,7 +165,7 @@ public class PantallaCrearCuenta extends javax.swing.JFrame {
                 txtTelefonoTomadoPorBotonActionPerformed(evt);
             }
         });
-        jPanel1.add(txtTelefonoTomadoPorBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 110, -1));
+        jPanel1.add(txtTelefonoTomadoPorBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 110, -1));
 
         jLabel5.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel5.setText("Patente:");
@@ -195,7 +173,7 @@ public class PantallaCrearCuenta extends javax.swing.JFrame {
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel6.setText("Marca:");
@@ -203,7 +181,7 @@ public class PantallaCrearCuenta extends javax.swing.JFrame {
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel7.setText("Modelo:");
@@ -211,7 +189,7 @@ public class PantallaCrearCuenta extends javax.swing.JFrame {
         jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel7.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
 
         txtDniTomadoPorBoton.setEditable(false);
         txtDniTomadoPorBoton.addActionListener(new java.awt.event.ActionListener() {
@@ -219,14 +197,14 @@ public class PantallaCrearCuenta extends javax.swing.JFrame {
                 txtDniTomadoPorBotonActionPerformed(evt);
             }
         });
-        jPanel1.add(txtDniTomadoPorBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 110, -1));
+        jPanel1.add(txtDniTomadoPorBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 110, -1));
 
         txtMarcaVehiculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMarcaVehiculoActionPerformed(evt);
             }
         });
-        jPanel1.add(txtMarcaVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, 110, -1));
+        jPanel1.add(txtMarcaVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 110, -1));
         txtMarcaVehiculo.getAccessibleContext().setAccessibleName("");
 
         txtModeloVehiculo.addActionListener(new java.awt.event.ActionListener() {
@@ -234,7 +212,7 @@ public class PantallaCrearCuenta extends javax.swing.JFrame {
                 txtModeloVehiculoActionPerformed(evt);
             }
         });
-        jPanel1.add(txtModeloVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 410, 110, -1));
+        jPanel1.add(txtModeloVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, 110, -1));
 
         jLabel8.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel8.setText("Telefono:");
@@ -242,22 +220,26 @@ public class PantallaCrearCuenta extends javax.swing.JFrame {
         jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel8.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel8.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
 
         txtPatenteVehiculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPatenteVehiculoActionPerformed(evt);
             }
         });
-        jPanel1.add(txtPatenteVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 450, 110, -1));
+        jPanel1.add(txtPatenteVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 410, 110, -1));
 
+        BotonGuardar.setBackground(new java.awt.Color(255, 133, 29));
+        BotonGuardar.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        BotonGuardar.setForeground(new java.awt.Color(255, 255, 255));
         BotonGuardar.setText("Guardar");
+        BotonGuardar.setBorderPainted(false);
         BotonGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonGuardarActionPerformed(evt);
             }
         });
-        jPanel1.add(BotonGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 440, 90, 40));
+        jPanel1.add(BotonGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 450, 110, -1));
 
         jLabel9.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel9.setText("Contraseña:");
@@ -265,7 +247,7 @@ public class PantallaCrearCuenta extends javax.swing.JFrame {
         jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel9.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel9.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
 
         txtContraseña.setMinimumSize(new java.awt.Dimension(120, 70));
         txtContraseña.addActionListener(new java.awt.event.ActionListener() {
@@ -273,9 +255,52 @@ public class PantallaCrearCuenta extends javax.swing.JFrame {
                 txtContraseñaActionPerformed(evt);
             }
         });
-        jPanel1.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 110, -1));
+        jPanel1.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 110, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 510));
+        jPanel3.setBackground(new java.awt.Color(255, 153, 0));
+        jPanel3.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel3.setPreferredSize(new java.awt.Dimension(400, 80));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Informacion del Usuario");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(30, Short.MAX_VALUE)
+                .addComponent(jLabel11)
+                .addGap(36, 36, 36))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jLabel11)
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 70));
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 208, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 408, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 210, 410));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 550));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -323,8 +348,8 @@ public class PantallaCrearCuenta extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonGuardar;
-    private javax.swing.JLabel Titulo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -334,7 +359,8 @@ public class PantallaCrearCuenta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JTextField txtApellidoTomadoPorBoton;
     private javax.swing.JTextField txtContraseña;
     private javax.swing.JTextField txtDniTomadoPorBoton;

@@ -1,8 +1,7 @@
 package terceraEntregaTpi.M;
-
 import java.util.List;
 
-public interface RepositorioPersonas {
+public abstract interface RepositorioPersonas {
     List<Persona> listarPersonasSinCuenta();
     List<Persona> listarPersonasConCuenta();
     String obtenerContraseñaPorLegajo(Long legajo);

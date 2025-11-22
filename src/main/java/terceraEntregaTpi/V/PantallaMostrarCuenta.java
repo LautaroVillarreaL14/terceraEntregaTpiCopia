@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package terceraEntregaTpi.V;
-import javax.swing.JOptionPane;
 import terceraEntregaTpi.M.Persona;
 
 
@@ -48,8 +47,10 @@ public class PantallaMostrarCuenta extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel12 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         txtNombreTomadoPorBoton = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -71,28 +72,45 @@ public class PantallaMostrarCuenta extends javax.swing.JFrame {
         BtnCargarSaldo = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         txtPatenteVehiculo = new javax.swing.JTextField();
+        jPanel4 = new javax.swing.JPanel();
+
+        jLabel12.setText("jLabel12");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(310, 550));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setMinimumSize(new java.awt.Dimension(310, 540));
+        jPanel1.setPreferredSize(new java.awt.Dimension(310, 540));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 153, 0));
+        jPanel2.setForeground(new java.awt.Color(255, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(400, 80));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Informacion del Usuario");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(29, Short.MAX_VALUE)
+                .addComponent(jLabel11)
+                .addGap(27, 27, 27))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 80, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel11)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, -1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 310, 60));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel1.setText("Nombre:");
@@ -100,7 +118,7 @@ public class PantallaMostrarCuenta extends javax.swing.JFrame {
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
 
         txtNombreTomadoPorBoton.setEditable(false);
         txtNombreTomadoPorBoton.setFocusable(false);
@@ -109,7 +127,7 @@ public class PantallaMostrarCuenta extends javax.swing.JFrame {
                 txtNombreTomadoPorBotonActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNombreTomadoPorBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 110, -1));
+        jPanel1.add(txtNombreTomadoPorBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 110, -1));
 
         jLabel4.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel4.setText("Apellido:");
@@ -117,11 +135,11 @@ public class PantallaMostrarCuenta extends javax.swing.JFrame {
         jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
 
         txtApellidoTomadoPorBoton.setEditable(false);
         txtApellidoTomadoPorBoton.setFocusable(false);
-        jPanel1.add(txtApellidoTomadoPorBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 110, -1));
+        jPanel1.add(txtApellidoTomadoPorBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 110, -1));
 
         jLabel3.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel3.setText("Legajo:");
@@ -129,7 +147,7 @@ public class PantallaMostrarCuenta extends javax.swing.JFrame {
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
 
         txtLegajoTomadoPorBoton.setEditable(false);
         txtLegajoTomadoPorBoton.setFocusable(false);
@@ -138,7 +156,7 @@ public class PantallaMostrarCuenta extends javax.swing.JFrame {
                 txtLegajoTomadoPorBotonActionPerformed(evt);
             }
         });
-        jPanel1.add(txtLegajoTomadoPorBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 110, -1));
+        jPanel1.add(txtLegajoTomadoPorBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 110, -1));
 
         jLabel2.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel2.setText("DNI:");
@@ -146,7 +164,7 @@ public class PantallaMostrarCuenta extends javax.swing.JFrame {
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
 
         txtDniTomadoPorBoton.setEditable(false);
         txtDniTomadoPorBoton.setFocusable(false);
@@ -155,7 +173,7 @@ public class PantallaMostrarCuenta extends javax.swing.JFrame {
                 txtDniTomadoPorBotonActionPerformed(evt);
             }
         });
-        jPanel1.add(txtDniTomadoPorBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 110, -1));
+        jPanel1.add(txtDniTomadoPorBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 110, -1));
 
         jLabel8.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel8.setText("Telefono:");
@@ -163,7 +181,7 @@ public class PantallaMostrarCuenta extends javax.swing.JFrame {
         jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel8.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel8.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
 
         txtTelefonoTomadoPorBoton.setEditable(false);
         txtTelefonoTomadoPorBoton.setFocusable(false);
@@ -172,7 +190,7 @@ public class PantallaMostrarCuenta extends javax.swing.JFrame {
                 txtTelefonoTomadoPorBotonActionPerformed(evt);
             }
         });
-        jPanel1.add(txtTelefonoTomadoPorBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 110, -1));
+        jPanel1.add(txtTelefonoTomadoPorBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 110, -1));
 
         jLabel9.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel9.setText("Contraseña:");
@@ -180,7 +198,7 @@ public class PantallaMostrarCuenta extends javax.swing.JFrame {
         jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel9.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel9.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, -1, -1));
 
         txtContraseña.setEditable(false);
         txtContraseña.setFocusable(false);
@@ -190,7 +208,7 @@ public class PantallaMostrarCuenta extends javax.swing.JFrame {
                 txtContraseñaActionPerformed(evt);
             }
         });
-        jPanel1.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 110, -1));
+        jPanel1.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 110, -1));
 
         jLabel6.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel6.setText("Marca:");
@@ -198,7 +216,7 @@ public class PantallaMostrarCuenta extends javax.swing.JFrame {
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, -1));
 
         txtMarcaVehiculo.setEditable(false);
         txtMarcaVehiculo.setFocusable(false);
@@ -207,7 +225,7 @@ public class PantallaMostrarCuenta extends javax.swing.JFrame {
                 txtMarcaVehiculoActionPerformed(evt);
             }
         });
-        jPanel1.add(txtMarcaVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 110, -1));
+        jPanel1.add(txtMarcaVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, 110, -1));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel7.setText("Modelo:");
@@ -215,7 +233,7 @@ public class PantallaMostrarCuenta extends javax.swing.JFrame {
         jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel7.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, -1, -1));
 
         txtModeloVehiculo.setEditable(false);
         txtModeloVehiculo.setFocusable(false);
@@ -224,7 +242,7 @@ public class PantallaMostrarCuenta extends javax.swing.JFrame {
                 txtModeloVehiculoActionPerformed(evt);
             }
         });
-        jPanel1.add(txtModeloVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, 110, -1));
+        jPanel1.add(txtModeloVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 390, 110, -1));
 
         jLabel5.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel5.setText("Saldo:");
@@ -232,7 +250,7 @@ public class PantallaMostrarCuenta extends javax.swing.JFrame {
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 470, -1, -1));
 
         txtSaldo.setEditable(false);
         txtSaldo.setFocusable(false);
@@ -241,15 +259,19 @@ public class PantallaMostrarCuenta extends javax.swing.JFrame {
                 txtSaldoActionPerformed(evt);
             }
         });
-        jPanel1.add(txtSaldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 450, 110, -1));
+        jPanel1.add(txtSaldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 470, 110, -1));
 
+        BtnCargarSaldo.setBackground(new java.awt.Color(255, 153, 0));
+        BtnCargarSaldo.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        BtnCargarSaldo.setForeground(new java.awt.Color(255, 255, 255));
         BtnCargarSaldo.setText("Cargar Saldo");
+        BtnCargarSaldo.setBorderPainted(false);
         BtnCargarSaldo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnCargarSaldoActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnCargarSaldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 450, 150, -1));
+        jPanel1.add(BtnCargarSaldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 510, 110, -1));
 
         jLabel10.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel10.setText("Patente:");
@@ -257,7 +279,7 @@ public class PantallaMostrarCuenta extends javax.swing.JFrame {
         jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel10.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel10.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, -1, -1));
 
         txtPatenteVehiculo.setEditable(false);
         txtPatenteVehiculo.setFocusable(false);
@@ -266,9 +288,25 @@ public class PantallaMostrarCuenta extends javax.swing.JFrame {
                 txtPatenteVehiculoActionPerformed(evt);
             }
         });
-        jPanel1.add(txtPatenteVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 410, 110, -1));
+        jPanel1.add(txtPatenteVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 430, 110, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 540));
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 208, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 438, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 210, 440));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 310, 590));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -322,6 +360,8 @@ public class PantallaMostrarCuenta extends javax.swing.JFrame {
     private javax.swing.JButton BtnCargarSaldo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -332,6 +372,7 @@ public class PantallaMostrarCuenta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JTextField txtApellidoTomadoPorBoton;
     private javax.swing.JTextField txtContraseña;
     private javax.swing.JTextField txtDniTomadoPorBoton;

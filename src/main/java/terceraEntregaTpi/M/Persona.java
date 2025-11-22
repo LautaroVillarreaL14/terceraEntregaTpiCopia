@@ -1,17 +1,17 @@
 package terceraEntregaTpi.M;
 
 public class Persona{
-    private final String nombre;       
-    private final String apellido;     
-    private final long legajo;         
-    private final long dni;            
-    private final long telefono;       
-    private final String correo;       
-    private final String tipoPersona; 
+    private final String nombre;
+    private final String apellido;
+    private final long legajo;
+    private final long dni;
+    private final long telefono;
+    private final String correo;
+    private final String tipoPersona;
     private String marcaVehiculo;
     private String modelovehiculo;
     private String patenteVehiculo;
-    private  Boolean cuenta;     
+    private  Boolean cuenta;
    
    
     
@@ -32,21 +32,25 @@ public class Persona{
     public long getLegajo() {
         return this.legajo;
     }
+    
     public String getTipoPersona(){
         return this.tipoPersona;
     }
     public String getNombre(){
         return this.nombre;
     }
+
     public String getApellido(){
         return this.apellido;
     }
     public String getCorreo(){
         return this.correo;
     }
+
     public Long getDNI(){
         return this.dni;
     }
+
     public Long getTelefono(){
         return this.telefono;
     }
@@ -54,18 +58,23 @@ public class Persona{
     public void setMarca(String marca){
         marcaVehiculo = marca;
     }
+
     public void setModelo(String modelo){
         modelovehiculo = modelo;
     }
+
     public void setPatente(String patente){
         patenteVehiculo = patente;
     }
+
     public String getMarcaVehiculo(){
         return this.marcaVehiculo;
     }
+
     public String getModeloVehiculo(){
         return this.modelovehiculo;
     }
+    
     public String getPatenteVehiculo(){
         return this.patenteVehiculo;
     }

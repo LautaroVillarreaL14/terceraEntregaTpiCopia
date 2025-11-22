@@ -2,32 +2,17 @@ package terceraEntregaTpi.M;
 import org.jpl7.Term;
 import org.jpl7.Query;
 
-
-
-
-
 public class ManipuladorArchivosProlog {
+
     public Boolean abrirArchivoBaseDeConocimientoPersonas(){
         try {
         String rutaArchivo = "src/main/resources/prolog/BaseConocimientoPersonasUtn.pl";
-        
 
-        
         Query cargarArchivo = new Query("consult('" + rutaArchivo + "')");
         return cargarArchivo.hasSolution();
         } catch (Exception e) {return false;}
     }
-    
-    public Boolean abrirArchivoBaseConocimientoCuentasUsuarios(){
-        try{
-            String rutaArchivo = ManipuladorArchivosProlog.class.getClassLoader().getResource("prolog/BaseConocimientoCuentasUsuarios.pl").getPath();
-            Query consulta = new Query("consult('" + rutaArchivo +"')");
-            return consulta.hasSolution();
-        }catch (Exception e){return false;}
-    }
-    
-    
-    
+        
     public void cambiarParametroNoTieneCuenta(Persona pSeleccionada,Vehiculo vehiculo,String contra){
         String nombre = pSeleccionada.getNombre();
         String apellido = pSeleccionada.getApellido();
@@ -46,24 +31,24 @@ public class ManipuladorArchivosProlog {
         
         String hechoViejo = String.format("usuario(_,_,%d,_,_,_,_,_,_,_,_,_,false)",legajo);
         
-        Query retract = new Query("retract(" + hechoViejo + ")");
-        if(!retract.hasSolution()) return;
+        Query eliminarHecho = new Query("retract(" + hechoViejo + ")");
+        if(!eliminarHecho.hasSolution()) return;
         
         String hechoNuevo = String.format("assert(usuario('%s','%s',%d,%d,%d,'%s','%s','%s','%s','%s','%s','%s',true))",
-            nombre,apellido,legajo,dni,telefono,correo,tipo,marca,modelo,patente,saldo,contraseña);
+            nombre.toLowerCase(),apellido.toLowerCase(),legajo,dni,telefono,correo.toLowerCase(),tipo.toLowerCase(),marca.toLowerCase(),modelo.toLowerCase(),patente.toLowerCase(),saldo,contraseña);
 
-        Query assertQ = new Query(hechoNuevo);
-        assertQ.hasSolution();
+        Query insertar = new Query(hechoNuevo);
+        insertar.hasSolution();
         
         String rutaArchivo = "src/main/resources/prolog/BaseConocimientoPersonasUtn.pl";
         Query salida = new Query("tell('" + rutaArchivo + "')");
         salida.hasSolution();
 
-        Query listing = new Query("listing(usuario/13).");
-        listing.hasSolution();
+        Query listar = new Query("listing(usuario/13).");
+        listar.hasSolution();
 
-        Query told = new Query("told");
-        told.hasSolution();
+        Query cerrarArchivo = new Query("told");
+        cerrarArchivo.hasSolution();
     }
     
     
@@ -71,15 +56,11 @@ public class ManipuladorArchivosProlog {
 
         try {
             if (!abrirArchivoBaseDeConocimientoPersonas()) return null;
-
             String consulta = String.format("usuario(_,_,%d,_,_,_,_,_,_,_,_,Contraseña,_)",legajoBuscado);
-
             Query q = new Query(consulta);
-
             if (!q.hasSolution()) return null;
 
             Term solucion = q.oneSolution().get("Contraseña");
-
             return solucion.name();
 
         } catch (Exception e) {return null;}
@@ -90,14 +71,11 @@ public class ManipuladorArchivosProlog {
             if (!abrirArchivoBaseDeConocimientoPersonas()) return null;
 
             String consulta = String.format("usuario(_,_,%d,_,_,_,_,_,_,_,Saldo,_,true)",legajoBuscado);
-            
             Query q = new Query(consulta);
-
             if (!q.hasSolution()) return null;
             
             Term solucion = q.oneSolution().get("Saldo");
-
-            return solucion.name(); 
+            return solucion.name();
 
         } catch (Exception e) {return null;}
     }

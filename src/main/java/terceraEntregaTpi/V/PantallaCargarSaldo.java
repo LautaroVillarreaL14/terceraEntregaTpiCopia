@@ -12,6 +12,7 @@ public class PantallaCargarSaldo extends javax.swing.JFrame{
 
     public PantallaCargarSaldo() {
         initComponents();
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         ((AbstractDocument) txtSaldoCargar.getDocument()).setDocumentFilter(new FiltroNumericoRecargaDeSaldo());
     }
@@ -22,16 +23,17 @@ public class PantallaCargarSaldo extends javax.swing.JFrame{
         return BtnConfirmarRecarga;
     }
     
-    public void mostrarMensaje(String mensaje, String nuevoSaldo){
-        JOptionPane.showMessageDialog(null, mensaje+nuevoSaldo);
+    public void mostrarMensaje(String mensaje){
+        JOptionPane.showMessageDialog(null, mensaje);
     }
     
 
-    
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         BtnConfirmarRecarga = new javax.swing.JButton();
         txtSaldoCargar = new javax.swing.JTextField();
@@ -43,18 +45,28 @@ public class PantallaCargarSaldo extends javax.swing.JFrame{
 
         jPanel2.setBackground(new java.awt.Color(255, 153, 0));
 
+        jLabel2.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Cargar Saldo");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 480, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(135, 135, 135)
+                .addComponent(jLabel2)
+                .addContainerGap(157, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 60, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel2)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 60));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 60));
 
         jLabel1.setText("Ingresa el monto a cargar:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
@@ -77,23 +89,24 @@ public class PantallaCargarSaldo extends javax.swing.JFrame{
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
         );
 
         pack();
-    }
+    }// </editor-fold>//GEN-END:initComponents
 
-    private void txtSaldoCargarActionPerformed(java.awt.event.ActionEvent evt) {
+    private void txtSaldoCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSaldoCargarActionPerformed
         
-    }
+    }//GEN-LAST:event_txtSaldoCargarActionPerformed
 
     
 
-    
+    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnConfirmarRecarga;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtSaldoCargar;
-    
+    // End of variables declaration//GEN-END:variables
 }
