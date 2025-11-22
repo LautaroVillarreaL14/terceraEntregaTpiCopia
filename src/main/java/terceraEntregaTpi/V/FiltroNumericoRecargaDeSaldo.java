@@ -3,19 +3,19 @@ import javax.swing.text.*;
 
 public class FiltroNumericoRecargaDeSaldo extends DocumentFilter {
 
-    public void insertString(FilterBypass fb, int offset, String text, AttributeSet attr) throws BadLocationException {
-        if (text != null && text.matches("\\d+")) {super.insertString(fb, offset, text, attr);}
+    public void insertString(FilterBypass filtro, int posicion, String texto, AttributeSet atributo) throws BadLocationException {
+        if (texto != null && texto.matches("\\d+")) {super.insertString(filtro, posicion, texto, atributo);}
     }
 
-    public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attr) throws BadLocationException{
-        if (text == null) {
-            super.replace(fb, offset, length, "", attr);
+    public void replace(FilterBypass filtro, int posicion, int longitud, String texto, AttributeSet atributo) throws BadLocationException{
+        if (texto == null) {
+            super.replace(filtro, posicion, longitud, "", atributo);
             return;
         }
-        if (text.matches("\\d+")) {super.replace(fb, offset, length, text, attr);}
+        if (texto.matches("\\d+")) {super.replace(filtro, posicion, longitud, texto, atributo);}
     }
 
-    public void remove(FilterBypass fb, int offset, int length) throws BadLocationException {
-        super.remove(fb, offset, length); 
+    public void remove(FilterBypass filtro, int posicion, int longitud) throws BadLocationException {
+        super.remove(filtro, posicion, longitud);
     }
 }
